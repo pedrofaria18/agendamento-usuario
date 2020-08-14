@@ -87,5 +87,6 @@ function enviarDados() {
     document.getElementById("msgCidade").innerHTML="Cidade *";
     document.getElementById("msgData").innerHTML="<font color='red'>Data inválida</font>"
     return false
-  } 
+  }
+  alert("Agendamento feito com sucesso") 
 }
