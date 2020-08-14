@@ -7,6 +7,7 @@ function enviarDados() {
   var bairro = document.getElementById("bairro")
   var cidade = document.getElementById("cidade")
   var data = document.getElementById("data")
+
   if(nome.value == "") {
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -27,7 +28,7 @@ function enviarDados() {
     document.getElementById("msgData").innerHTML="Data *";
     document.getElementById("msgEmail").innerHTML="<font color='red'>Email inválido</font>"
     return false
-  } else if(cep.value == "") {
+  } else if(cep.value == "" || cep.value.length < 8) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgRua").innerHTML="Rua *";
