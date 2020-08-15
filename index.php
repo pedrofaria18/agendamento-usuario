@@ -3,9 +3,9 @@
   <head>
     <title>Agendamento</title>
 
-    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/style.css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -13,7 +13,7 @@
 
     <h1>AGENDAMENTO</h1>
 
-    <form action="dados.php" method="post">
+    <form action="#" method="post">
       <section class="dados">
         <legend>Dados Pessoais</legend>
 
@@ -61,15 +61,15 @@
       </section>
 
       <section class="data">
-        <legend>Data para recebimento</legend>
+        <legend>Data</legend>
 
         <div class="form-group">
-          <label id="msgData" for="data">Data *</label>
+          <label id="msgData" for="data">Data para recebimento do kit (somente aos sábados) *</label>
           <input class="form-control" data-provide="datepicker" name="data" id="data"/> 
         </div>
       </section>
 
-      <button type="submit" class="btn btn-primary" onclick="return enviarDados()">Enviar</button>
+      <button type="submit" id="btnSubmit" class="btn btn-primary">Enviar</button>
     </form>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -78,8 +78,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <script src="js/firebase.js"></script>
     <script src="js/date.js"></script>
     <script src="js/cep.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/custom.js?<? rand(1,9999999) ?>"></script>
   </body>
 </html>

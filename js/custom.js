@@ -1,14 +1,32 @@
-function enviarDados() {
-  var nome = document.getElementById("nome")
-  var email = document.getElementById("email")
-  var cep = document.getElementById("cep")
-  var rua = document.getElementById("rua")
-  var numero = document.getElementById("numero")
-  var bairro = document.getElementById("bairro")
-  var cidade = document.getElementById("cidade")
-  var data = document.getElementById("data")
+function empty(v){
+  if(v == null || v == 0 || v == '' || v==""){
+    return true;
+  }else{
+    return false;
+  }
+}
 
-  if(nome.value == "") {
+const btnSubmit = document.getElementById('btnSubmit');
+
+btnSubmit.addEventListener(
+  'click', enviarDados, false
+);
+
+function enviarDados(event) {
+  
+  event.preventDefault();
+
+  var nome = document.getElementById("nome").value
+  var email = document.getElementById("email").value
+  var cep = document.getElementById("cep").value
+  var rua = document.getElementById("rua").value
+  var numero = document.getElementById("numero").value
+  var complemento = document.getElementById("complemento").value
+  var bairro = document.getElementById("bairro").value
+  var cidade = document.getElementById("cidade").value
+  var data = document.getElementById("data").value
+
+  if(empty(nome)) {
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -18,7 +36,7 @@ function enviarDados() {
     document.getElementById("msgData").innerHTML="Data *";
     document.getElementById("msgNome").innerHTML="<font color='red'>Nome inválido</font>"
     return false
-  } else if(email.value == "") {
+  } else if(empty(email)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -28,7 +46,7 @@ function enviarDados() {
     document.getElementById("msgData").innerHTML="Data *";
     document.getElementById("msgEmail").innerHTML="<font color='red'>Email inválido</font>"
     return false
-  } else if(cep.value == "" || cep.value.length < 8) {
+  } else if(empty(cep) || cep.length < 8) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -38,7 +56,7 @@ function enviarDados() {
     document.getElementById("msgData").innerHTML="Data *";
     document.getElementById("msgCep").innerHTML="<font color='red'>CEP inválido</font>"
     return false
-  } else if(rua.value == "") {
+  } else if(empty(rua)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgNumero").innerHTML="Numero *";
@@ -48,7 +66,7 @@ function enviarDados() {
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="<font color='red'>Rua inválida</font>"
     return false
-  } else if(numero.value == "") {
+  } else if(empty(numero)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -58,7 +76,7 @@ function enviarDados() {
     document.getElementById("msgRua").innerHTML="Rua *";
     document.getElementById("msgNumero").innerHTML="<font color='red'>N° inválido</font>"
     return false
-  } else if(bairro.value == "") {
+  } else if(empty(bairro)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -68,7 +86,7 @@ function enviarDados() {
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="<font color='red'>Bairro inválido</font>"
     return false
-  } else if(cidade.value == "") {
+  } else if(empty(cidade)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -78,7 +96,7 @@ function enviarDados() {
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="<font color='red'>Cidade inválida</font>"
     return false
-  } else if(data.value == "") {
+  } else if(empty(data)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -89,5 +107,6 @@ function enviarDados() {
     document.getElementById("msgData").innerHTML="<font color='red'>Data inválida</font>"
     return false
   }
-  alert("Agendamento feito com sucesso") 
+  alert("Agendamento feito com sucesso");
+  create({nome, email, cep, rua, numero, cidade, data}, 'clientes');
 }
