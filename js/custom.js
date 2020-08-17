@@ -27,6 +27,7 @@ function enviarDados(event) {
   var neighborhood = document.getElementById("bairro").value
   var city = document.getElementById("cidade").value
   var data = document.getElementById("data").value
+  var schedule = document.getElementById("horario").value
 
   // VALIDAR NOME
   if(empty(recipient_name)) {
@@ -36,7 +37,8 @@ function enviarDados(event) {
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="Cidade *";
-    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgNome").innerHTML="<font color='red'>Nome inválido</font>"
     return false
   } 
@@ -48,7 +50,8 @@ function enviarDados(event) {
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="Cidade *";
-    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgEmail").innerHTML="<font color='red'>Email inválido</font>"
     return false
   }
@@ -60,7 +63,8 @@ function enviarDados(event) {
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="Cidade *";
-    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgCep").innerHTML="<font color='red'>CEP inválido</font>"
     return false
   }
@@ -71,8 +75,9 @@ function enviarDados(event) {
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="Cidade *";
-    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
     document.getElementById("msgCep").innerHTML="CEP *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgRua").innerHTML="<font color='red'>Rua inválida</font>"
     return false
   } 
@@ -83,8 +88,9 @@ function enviarDados(event) {
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="Cidade *";
-    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
     document.getElementById("msgRua").innerHTML="Rua *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgNumero").innerHTML="<font color='red'>N° inválido</font>"
     return false
   }
@@ -95,8 +101,9 @@ function enviarDados(event) {
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
     document.getElementById("msgCidade").innerHTML="Cidade *";
-    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
     document.getElementById("msgNumero").innerHTML="Numero *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgBairro").innerHTML="<font color='red'>Bairro inválido</font>"
     return false
   }
@@ -107,8 +114,9 @@ function enviarDados(event) {
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
     document.getElementById("msgNumero").innerHTML="Numero *";
-    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgCidade").innerHTML="<font color='red'>Cidade inválida</font>"
     return false
   } 
@@ -121,11 +129,25 @@ function enviarDados(event) {
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="Cidade *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgData").innerHTML="<font color='red'>Data inválida</font>"
+    return false
+  }
+  // VALIDAR HORÁRIO
+  else if(empty(schedule)) {
+    document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
+    document.getElementById("msgCep").innerHTML="CEP *";
+    document.getElementById("msgRua").innerHTML="Rua *";
+    document.getElementById("msgNumero").innerHTML="Numero *";
+    document.getElementById("msgBairro").innerHTML="Bairro *";
+    document.getElementById("msgCidade").innerHTML="Cidade *";
+    document.getElementById("msgData").innerHTML="Data *";
+    document.getElementById("msgHorario").innerHTML="<font color='red'>Horário inválido</font>";
     return false
   }
   alert("Agendamento feito com sucesso");
 
   // ENVIAR OS DADOS PARA firebase.js
-  create({recipient_name, recipient_email, cep, address, address_number, address_complement,neighborhood, city, data}, 'clientes');
+  create({recipient_name, recipient_email, cep, address, address_number, address_complement,neighborhood, city, data, schedule}, 'clientes');
 }

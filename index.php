@@ -67,6 +67,15 @@
           <label id="msgData" for="data">Data para recebimento do kit (somente aos sábados) *</label>
           <input class="form-control" data-provide="datepicker" name="data" id="data"/> 
         </div>
+        <div class="form-group">
+  
+          <label id="msgHorario" for="horario">Horário para recebimento do kit *</label>
+          <select id="horario" name="horario" class="form-control">
+            <option selected></option>
+            <option value="manha">MANHÃ</option>
+            <option value="tarde">TARDE</option>
+          </select>
+        </div>
       </section>
 
       <button type="submit" id="btnSubmit" class="btn btn-primary">Enviar</button>
