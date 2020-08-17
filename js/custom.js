@@ -1,3 +1,4 @@
+// FUNÇÃO PARA VERIFICAÇÃO DE INPUTS VAZIOS
 function empty(v){
   if(v == null || v == 0 || v == '' || v==""){
     return true;
@@ -7,26 +8,28 @@ function empty(v){
 }
 
 const btnSubmit = document.getElementById('btnSubmit');
-
 btnSubmit.addEventListener(
   'click', enviarDados, false
 );
 
 function enviarDados(event) {
+  // validador de email
+  var validar = new RegExp(/^[A-Za-z0-9_\-\.]+@[A-Za-z0-9_\-\.]{2,}\.[A-Za-z0-9]{2,}(\.[A-Za-z0-9])?/);
   
   event.preventDefault();
 
-  var nome = document.getElementById("nome").value
-  var email = document.getElementById("email").value
+  var recipient_name = document.getElementById("nome").value
+  var recipient_email = document.getElementById("email").value
   var cep = document.getElementById("cep").value
-  var rua = document.getElementById("rua").value
-  var numero = document.getElementById("numero").value
-  var complemento = document.getElementById("complemento").value
-  var bairro = document.getElementById("bairro").value
-  var cidade = document.getElementById("cidade").value
+  var address = document.getElementById("rua").value
+  var address_number = document.getElementById("numero").value
+  var address_complement = document.getElementById("complemento").value
+  var neighborhood = document.getElementById("bairro").value
+  var city = document.getElementById("cidade").value
   var data = document.getElementById("data").value
 
-  if(empty(nome)) {
+  // VALIDAR NOME
+  if(empty(recipient_name)) {
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -36,7 +39,9 @@ function enviarDados(event) {
     document.getElementById("msgData").innerHTML="Data *";
     document.getElementById("msgNome").innerHTML="<font color='red'>Nome inválido</font>"
     return false
-  } else if(empty(email)) {
+  } 
+  // VALIDAR EMAIL
+  else if(empty(recipient_email) || !validar.test(recipient_email)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -46,7 +51,9 @@ function enviarDados(event) {
     document.getElementById("msgData").innerHTML="Data *";
     document.getElementById("msgEmail").innerHTML="<font color='red'>Email inválido</font>"
     return false
-  } else if(empty(cep) || cep.length < 8) {
+  }
+  // VALIDAR CEP
+  else if(empty(cep) || cep.length < 8) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -56,7 +63,9 @@ function enviarDados(event) {
     document.getElementById("msgData").innerHTML="Data *";
     document.getElementById("msgCep").innerHTML="<font color='red'>CEP inválido</font>"
     return false
-  } else if(empty(rua)) {
+  }
+  // VALIDAR RUA 
+  else if(empty(address)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgNumero").innerHTML="Numero *";
@@ -66,7 +75,9 @@ function enviarDados(event) {
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="<font color='red'>Rua inválida</font>"
     return false
-  } else if(empty(numero)) {
+  } 
+  // VALIDAR NÚMERO
+  else if(empty(address_number)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -76,7 +87,9 @@ function enviarDados(event) {
     document.getElementById("msgRua").innerHTML="Rua *";
     document.getElementById("msgNumero").innerHTML="<font color='red'>N° inválido</font>"
     return false
-  } else if(empty(bairro)) {
+  }
+  // VALIDAR BAIRRO 
+  else if(empty(neighborhood)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -86,7 +99,9 @@ function enviarDados(event) {
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="<font color='red'>Bairro inválido</font>"
     return false
-  } else if(empty(cidade)) {
+  }
+  // VALIDAR CIDADE 
+  else if(empty(city)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -96,7 +111,9 @@ function enviarDados(event) {
     document.getElementById("msgBairro").innerHTML="Bairro *";
     document.getElementById("msgCidade").innerHTML="<font color='red'>Cidade inválida</font>"
     return false
-  } else if(empty(data)) {
+  } 
+  // VALIDAR DATA
+  else if(empty(data)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
@@ -108,5 +125,7 @@ function enviarDados(event) {
     return false
   }
   alert("Agendamento feito com sucesso");
-  create({nome, email, cep, rua, numero, cidade, data}, 'clientes');
+
+  // ENVIAR OS DADOS PARA firebase.js
+  create({recipient_name, recipient_email, cep, address, address_number, address_complement,neighborhood, city, data}, 'clientes');
 }
