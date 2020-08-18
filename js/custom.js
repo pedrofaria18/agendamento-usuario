@@ -7,6 +7,44 @@ function empty(v){
   }
 }
 
+// FUNÇÃO PARA VERIFICAÇÃO DE CPF
+function validarCPF(cpf) {	
+	cpf = cpf.replace(/[^\d]+/g,'');	
+	if(cpf == '') return true;	
+	// Elimina CPFs invalidos conhecidos	
+	if (cpf.length != 11 || 
+		cpf == "00000000000" || 
+		cpf == "11111111111" || 
+		cpf == "22222222222" || 
+		cpf == "33333333333" || 
+		cpf == "44444444444" || 
+		cpf == "55555555555" || 
+		cpf == "66666666666" || 
+		cpf == "77777777777" || 
+		cpf == "88888888888" || 
+		cpf == "99999999999")
+			return true;		
+	// Valida 1o digito	
+	add = 0;	
+	for (i=0; i < 9; i ++)		
+		add += parseInt(cpf.charAt(i)) * (10 - i);	
+		rev = 11 - (add % 11);	
+		if (rev == 10 || rev == 11)		
+			rev = 0;	
+		if (rev != parseInt(cpf.charAt(9)))		
+			return true;		
+	// Valida 2o digito	
+	add = 0;	
+	for (i = 0; i < 10; i ++)		
+		add += parseInt(cpf.charAt(i)) * (11 - i);	
+	rev = 11 - (add % 11);	
+	if (rev == 10 || rev == 11)	
+		rev = 0;	
+	if (rev != parseInt(cpf.charAt(10)))
+		return true;		
+	return false;   
+}
+
 const btnSubmit = document.getElementById('btnSubmit');
 btnSubmit.addEventListener(
   'click', enviarDados, false
@@ -19,6 +57,7 @@ function enviarDados(event) {
   event.preventDefault();
 
   var recipient_name = document.getElementById("nome").value
+  var cpf = document.getElementById("cpf").value
   var recipient_email = document.getElementById("email").value
   var cep = document.getElementById("cep").value
   var address = document.getElementById("rua").value
@@ -39,12 +78,28 @@ function enviarDados(event) {
     document.getElementById("msgCidade").innerHTML="Cidade *";
     document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
     document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
-    document.getElementById("msgNome").innerHTML="<font color='red'>Nome inválido</font>"
+    document.getElementById("msgCpf").innerHTML="CPF *";
+    document.getElementById("msgNome").innerHTML="<font color='red'>Nome inválido</font>";
     return false
   } 
+  // VALIDAR CPF
+  else if(empty(cpf) || validarCPF(cpf)) {
+    document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCep").innerHTML="CEP *";
+    document.getElementById("msgRua").innerHTML="Rua *";
+    document.getElementById("msgNumero").innerHTML="Numero *";
+    document.getElementById("msgBairro").innerHTML="Bairro *";
+    document.getElementById("msgCidade").innerHTML="Cidade *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit (somente aos sábados) *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
+    document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
+    document.getElementById("msgCpf").innerHTML="<font color='red'>CPF inválido</font>";
+    return false
+  }
   // VALIDAR EMAIL
   else if(empty(recipient_email) || !validar.test(recipient_email)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
     document.getElementById("msgNumero").innerHTML="Numero *";
@@ -58,6 +113,7 @@ function enviarDados(event) {
   // VALIDAR CEP
   else if(empty(cep) || cep.length < 8) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgRua").innerHTML="Rua *";
     document.getElementById("msgNumero").innerHTML="Numero *";
@@ -71,6 +127,7 @@ function enviarDados(event) {
   // VALIDAR RUA 
   else if(empty(address)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgNumero").innerHTML="Numero *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
@@ -84,6 +141,7 @@ function enviarDados(event) {
   // VALIDAR NÚMERO
   else if(empty(address_number)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgBairro").innerHTML="Bairro *";
@@ -97,6 +155,7 @@ function enviarDados(event) {
   // VALIDAR BAIRRO 
   else if(empty(neighborhood)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -110,6 +169,7 @@ function enviarDados(event) {
   // VALIDAR CIDADE 
   else if(empty(city)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -123,6 +183,7 @@ function enviarDados(event) {
   // VALIDAR DATA
   else if(empty(data)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -136,6 +197,7 @@ function enviarDados(event) {
   // VALIDAR HORÁRIO
   else if(empty(schedule)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
     document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
     document.getElementById("msgCep").innerHTML="CEP *";
     document.getElementById("msgRua").innerHTML="Rua *";
@@ -149,5 +211,5 @@ function enviarDados(event) {
   alert("Agendamento feito com sucesso");
 
   // ENVIAR OS DADOS PARA firebase.js
-  create({recipient_name, recipient_email, cep, address, address_number, address_complement,neighborhood, city, data, schedule}, 'clientes');
+  create({recipient_name, cpf, recipient_email, cep, address, address_number, address_complement,neighborhood, city, data, schedule}, 'clientes');
 }

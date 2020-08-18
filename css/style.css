@@ -26,6 +26,17 @@ h1 {
   border-radius: 10px;
 }
 
+.cpf_email {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#cpf {
+  width: 450px;
+  margin-right: 10px;
+}
+
 .bairro_cidade {
   width: 100%;
   display: flex;

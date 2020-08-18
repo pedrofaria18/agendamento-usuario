@@ -21,10 +21,17 @@
           <label id="msgNome" for="nome">Nome Completo *</label>
           <input type="text" class="form-control" id="nome" name="nome">
         </div>
-        <div class="form-group">
-          <label id="msgEmail" for="email">E-mail pag-seguro *</label>
-          <input type="email" class="form-control" id="email" name="email">
-        </div>
+        <section class="cpf_email" style="width: 100%; display: flex; flex-direction: row;">
+          
+          <div class="form-group">
+            <label id="msgEmail" for="email">E-mail pag-seguro *</label>
+            <input type="email" class="form-control" id="email" name="email" style=" width: 450px; margin-right: 10px;">
+          </div>
+          <div class="form-group">
+            <label id="msgCpf" for="cpf">CPF *</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" style="width: 217px;">
+          </div>
+        </section>
       </section>
 
       <section class="endereco">
@@ -63,19 +70,20 @@
       <section class="data">
         <legend>Data</legend>
 
-        <div class="form-group">
-          <label id="msgData" for="data">Data para recebimento do kit (somente aos sábados) *</label>
-          <input class="form-control" data-provide="datepicker" name="data" id="data"/> 
-        </div>
-        <div class="form-group">
-  
-          <label id="msgHorario" for="horario">Horário para recebimento do kit *</label>
-          <select id="horario" name="horario" class="form-control">
-            <option selected></option>
-            <option value="manha">MANHÃ</option>
-            <option value="tarde">TARDE</option>
-          </select>
-        </div>
+        <section class="data_horario" style="width: 100%; display: flex; flex-direction: row;">
+          <div class="form-group">
+            <label id="msgData" for="data">Data para recebimento do kit *</label>
+            <input class="form-control" data-provide="datepicker" name="data" id="data" style="width: 335px; margin-right: 10px;"/> 
+          </div>
+          <div class="form-group">
+            <label id="msgHorario" for="horario">Horário para recebimento do kit *</label>
+            <select id="horario" name="horario" class="form-control" style="width: 335px;">
+              <option selected></option>
+              <option value="manha">MANHÃ</option>
+              <option value="tarde">TARDE</option>
+            </select>
+          </div>
+        </section>
       </section>
 
       <button type="submit" id="btnSubmit" class="btn btn-primary">Enviar</button>
