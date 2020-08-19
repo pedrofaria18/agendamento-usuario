@@ -210,6 +210,8 @@ function enviarDados(event) {
   }
   alert("Agendamento feito com sucesso");
 
+  criarTabelas = `${data} , ${schedule}`
+
   // ENVIAR OS DADOS PARA firebase.js
-  create({recipient_name, cpf, recipient_email, cep, address, address_number, address_complement,neighborhood, city, schedule}, data);
+  create({recipient_name, cpf, recipient_email, cep, address, address_number, address_complement,neighborhood, city, data, schedule}, criarTabelas);
 }
