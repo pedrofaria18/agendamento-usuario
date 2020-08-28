@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <img src="cruzeiro-logo.svg" alt="Logo Cruzeiro">
 
-    <h1>AGENDAMENTO</h1>
+    <h1>TEM JOGO,</h1>
+    <h1>TEM CHURRASCO</h1>
 
     <form action="#" method="post">
       <section class="dados">
@@ -86,9 +88,19 @@
         </section>
       </section>
       <div class="divButton">
-      <button type="submit" id="btnSubmit" class="btn btn-dark">Enviar</button>
+      <button type="submit" id="btnSubmit" class="btn btn-dark">ENVIAR</button>
       </div>
     </form>
+
+    <div class="apoiadores">
+      <h3>APOIADORES</h3>
+
+      <section class="logos"> 
+        <div class="logo1"></div>
+        <div class="logo1"></div>
+        <div class="logo1"></div>
+      </section>
+    </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -101,6 +113,6 @@
     <script src="js/firebase.js"></script>
     <script src="js/date.js"></script>
     <script src="js/cep.js"></script>
-    <script src="js/custom.js?<? rand(1,9999999) ?>"></script>
+    <script src="js/custom.js?"></script>
   </body>
 </html>
