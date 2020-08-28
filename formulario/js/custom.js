@@ -82,20 +82,6 @@ function enviarDados(event) {
     document.getElementById("msgNome").innerHTML="<font color='red'>Nome inválido</font>";
     return false
   } 
-  // VALIDAR CPF
-  else if(empty(cpf) || validarCPF(cpf)) {
-    document.getElementById("msgNome").innerHTML="Nome Completo *";
-    document.getElementById("msgCep").innerHTML="CEP *";
-    document.getElementById("msgRua").innerHTML="Rua *";
-    document.getElementById("msgNumero").innerHTML="Numero *";
-    document.getElementById("msgBairro").innerHTML="Bairro *";
-    document.getElementById("msgCidade").innerHTML="Cidade *";
-    document.getElementById("msgData").innerHTML="Data para recebimento do kit *";
-    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
-    document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
-    document.getElementById("msgCpf").innerHTML="<font color='red'>CPF inválido</font>";
-    return false
-  }
   // VALIDAR EMAIL
   else if(empty(recipient_email) || !validar.test(recipient_email)) {
     document.getElementById("msgNome").innerHTML="Nome Completo *";
@@ -108,6 +94,20 @@ function enviarDados(event) {
     document.getElementById("msgData").innerHTML="Data para recebimento do kit *";
     document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
     document.getElementById("msgEmail").innerHTML="<font color='red'>Email inválido</font>"
+    return false
+  }
+  // VALIDAR CPF
+  else if(empty(cpf) || validarCPF(cpf)) {
+    document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCep").innerHTML="CEP *";
+    document.getElementById("msgRua").innerHTML="Rua *";
+    document.getElementById("msgNumero").innerHTML="Numero *";
+    document.getElementById("msgBairro").innerHTML="Bairro *";
+    document.getElementById("msgCidade").innerHTML="Cidade *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
+    document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
+    document.getElementById("msgCpf").innerHTML="<font color='red'>CPF inválido</font>";
     return false
   }
   // VALIDAR CEP

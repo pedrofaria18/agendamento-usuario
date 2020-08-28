@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+  font-family: 'Teko';
 }
 
 body {
@@ -12,7 +12,14 @@ body {
   align-items: center;
 }
 
+img {
+  width: 350px;
+  height: 300px;
+}
+
 h1 { 
+  font: bold;
+  font-family: 'Teko';
   color: #e4c023;
 }
 
@@ -167,4 +174,3 @@ label {
     margin-left: 20px;
   }
 }
-
