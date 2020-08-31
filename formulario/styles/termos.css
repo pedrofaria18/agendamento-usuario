@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+}
+
+section {
+  margin-top: 30px;
+  background: white;
+  border-radius: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+@media ( min-width: 700px) {  
+  section {
+    width: 70%;
+  }
+}
