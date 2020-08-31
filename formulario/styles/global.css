@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Teko';
+}
+
+body {
+  background: #0063AF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+}
+
+img {
+  width: 350px;
+  height: 300px;
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+h1 { 
+  font: bold;
+  color: #e4c023;
+  text-shadow: 2px 2px 4px #000000;
+}
