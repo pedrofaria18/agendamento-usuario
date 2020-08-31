@@ -67,6 +67,7 @@ function enviarDados(event) {
   var city = document.getElementById("cidade").value
   var data = document.getElementById("data").value
   var schedule = document.getElementById("horario").value
+  var check = document.getElementById("termos")
 
   // VALIDAR NOME
   if(empty(recipient_name)) {
@@ -208,7 +209,35 @@ function enviarDados(event) {
     document.getElementById("msgHorario").innerHTML="<font color='red'>Horário inválido</font>";
     return false
   }
-  alert("Agendamento feito com sucesso");
+  else if(check.checked !== true) {
+    document.getElementById("msgNome").innerHTML="Nome Completo *";
+    document.getElementById("msgCpf").innerHTML="CPF *";
+    document.getElementById("msgEmail").innerHTML="E-mail pag-seguro *";
+    document.getElementById("msgCep").innerHTML="CEP *";
+    document.getElementById("msgRua").innerHTML="Rua *";
+    document.getElementById("msgNumero").innerHTML="Numero *";
+    document.getElementById("msgBairro").innerHTML="Bairro *";
+    document.getElementById("msgCidade").innerHTML="Cidade *";
+    document.getElementById("msgData").innerHTML="Data para recebimento do kit *";
+    document.getElementById("msgHorario").innerHTML="Horário para recebimento do kit *";
+    document.getElementById("msgTermo").innerHTML="<font color='red'>Aceite os Termos para completar o cadastro</font>";
+    return false
+  }
+  
+  if (document.getElementById('form')) {
+
+    if (document.getElementById('form').style.display == 'none') {
+        document.getElementById('form').style.display = 'block';
+        document.getElementById('agradecimento').style.display = 'none';
+    }
+    else {
+        document.getElementById('form').style.display = 'none';
+        document.getElementById('agradecimento').style.display = 'block';
+    }
+  }
+
+  const span = document.getElementById("msgAgradecimento")
+  span.innerHTML = `Muito obrigado, ${recipient_name}`
 
   criarTabelas = `${data} , ${schedule}`
 
